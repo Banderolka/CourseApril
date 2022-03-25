@@ -39,7 +39,9 @@ public class ApplineTrainingTest {
         String fieldPasswordXPath = "//input[@name='_password']";
         String comeButtonXPath = "//button[@type='submit']";
         WebElement comeButton = driver.findElement(By.xpath(comeButtonXPath));
+        waitUtilElementToBeVisible(By.xpath(fieldUserNameXPath));
         fillInputField(driver.findElement(By.xpath(fieldUserNameXPath)), "Taraskina Valeriya");
+        waitUtilElementToBeVisible(By.xpath(fieldPasswordXPath));
         fillInputField(driver.findElement(By.xpath(fieldPasswordXPath)), "testing");
         comeButton.click();
 
@@ -110,6 +112,7 @@ public class ApplineTrainingTest {
 
         //проверка ошибки на странице
         WebElement validationError = driver.findElement(By.xpath("//span[@class='validation-failed']"));
+        waitUtilElementToBeVisible(By.xpath("//span[@class='validation-failed']"));
         Assert.assertEquals("Проверка ошибки у поля не была пройдена",
                 "Список командируемых сотрудников не может быть пустым", validationError.getText());
 
